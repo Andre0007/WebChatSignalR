@@ -23,13 +23,12 @@ namespace WebChatSignalR.Web.Hubs
             return base.OnConnectedAsync();
         }
 
-
         /// <summary>
         /// Método responsável por encaminhar as mensagens pelo hub
         /// </summary>
         /// <param name="ChatMessage">Este parâmetro é nosso objeto representando a mensagem e os usuários envolvidos</param>
         /// <returns></returns>
-        public async Task SendMessage(Message chat)
+        public async Task SendMessage(ChatMessage chat)
         {
             //Ao usar o método Client(_connections.GetUserId(chat.destination)) eu estou enviando a mensagem apenas para o usuário destino, não realizando broadcast
             await Clients.Client(_connections.GetUserId(chat.destination)).SendAsync("Receive", chat.sender, chat.message);

@@ -46,7 +46,9 @@ namespace WebChatSignalR.Web
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            app.UseSignalR(routes => {
+
+            app.UseSignalR(routes =>
+            {
                 routes.MapHub<ChatHub>("/chat");
             });
         }

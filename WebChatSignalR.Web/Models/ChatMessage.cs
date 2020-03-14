@@ -2,10 +2,10 @@
 
 namespace WebChatSignalR.Web.Models
 {
-    public class Message
+    public class ChatMessage
     {
         public Int64 destination { get; set; }
         public User sender { get; set; }
-        public object message { get; set; }
+        public string message { get; set; }
     }
 }

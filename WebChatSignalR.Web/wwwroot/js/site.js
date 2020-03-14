@@ -67,7 +67,7 @@ async function startConnection(chat) {
     } catch (err) {
         setTimeout(() => startConnection(chat.connection), 5000);
     }
-};
+}
 
 //Função para carregar usuários no chat
 async function loadChat(connection) {
@@ -75,15 +75,13 @@ async function loadChat(connection) {
         const listUsers = (data) => {
             return users.map((u) => {
                 if (!checkIfElementExist(u.key, 'id') && u.key !== window.chat.state.key)
-                    return (
-                        `
+                    return  `
               <section class="user box_shadow_0" onclick="openChat(this)" data-id="${ u.key}" data-name="${u.name}">
               <span class="user_icon">${ u.name.charAt(0)}</span>
               <p class="user_name"> ${ u.name} </p>
               <span class="user_date"> ${ new Date(u.dtConnection).toLocaleDateString()}</span>
               </section>
-              `
-                    );
+              `;
             }).join('');
         };
 
@@ -100,23 +98,22 @@ function openChat(e, sender, message) {
     };
 
     if (!checkIfElementExist(user.id, 'chat')) {
-        const chat =
-            `
+        const chat =`
         <section class="chat" data-chat="${ user.id}">
-        <header>
-            ${ user.name}
-        </header>
-        <main>
-        </main>
-        <footer>
-            <input type="text" placeholder="Digite aqui sua mensagem" data-chat="${ user.id}">
-            <a onclick="sendMessage(this)" data-chat="${ user.id}">Enviar</a>
-        </footer>
-        </section>
-        `;
+            <header>
+                ${ user.name}
+            </header>
+            <main>
+            </main>
+            <footer>
+                <input type="text" placeholder="Digite aqui sua mensagem" data-chat="${ user.id}">
+                <a onclick="sendMessage(this)" data-chat="${ user.id}">Enviar</a>
+            </footer>
+        </section>`;
 
         $('.chats_wrapper').append(chat);
     }
+
     if (sender && message)
         insertMessage(sender.key, 'their', message);
 }
