@@ -1,2 +1,2 @@
-# Web Chat SignalR
-Projeto desenvolvido em C# Core 3.1, MVC 5, CSS
+# Web Chat
+Projeto de um Chat desenvolvido em .NET C# Core 3.1 com SignalR, MVC 5, CSS
